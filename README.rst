@@ -22,4 +22,6 @@ Make Kubernetes integration with OpenStack storage
 Features
 --------
 
+.. include:: devref/flex_volume_driver.rst
+
 * TODO
