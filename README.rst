@@ -18,8 +18,3 @@ Make Kubernetes integration with OpenStack storage
 * Source: http://git.openstack.org/cgit/openstack/fuxi-kubernetes
 * Bugs: http://bugs.launchpad.net/fuxi-kubernetes
 * Blueprints: https://blueprints.launchpad.net/fuxi-kubernetes
-
-Features
---------
-
-* TODO
