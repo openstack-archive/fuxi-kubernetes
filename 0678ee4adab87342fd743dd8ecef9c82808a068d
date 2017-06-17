@@ -1,0 +1,10 @@
+Code-Review+2: Antoni Segura Puimedon <celebdor@gmail.com>
+Code-Review+1: Kirill Zaitsev <k.zaitsev@me.com>
+Code-Review+2: Liping Mao <limao@cisco.com>
+Workflow+1: Liping Mao <limao@cisco.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Sat, 17 Jun 2017 02:38:42 +0000
+Reviewed-on: https://review.openstack.org/470923
+Project: openstack/fuxi-kubernetes
+Branch: refs/heads/master
