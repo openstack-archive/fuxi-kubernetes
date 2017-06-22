@@ -13,6 +13,7 @@
 from cinderclient import client as cinder_client
 from kuryr.lib import utils as kuryr_utils
 from os_brick.initiator import connector
+import socket
 
 from fuxi_kubernetes.common import config as local_config
 
@@ -52,6 +53,10 @@ def brick_get_connector(protocol, driver=None, use_multipath=False,
         driver=driver, use_multipath=use_multipath,
         device_scan_attempts=device_scan_attempts,
         *args, **kwargs)
+
+
+def get_local_hostname():
+    return socket.gethostname().lower()
 
 
 def _get_keystone_session(conf_group, **kwargs):

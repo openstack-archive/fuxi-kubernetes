@@ -74,8 +74,12 @@ class BaseVolumeDriver(object):
     def unmount(self, mount_dir):
         return self.Default_Result
 
-    def _request_server(self, api, data):
+    def _generate_result(self, ret, info):
+        info['status'] = constants.STATUS_SUCCESS if ret else (
+            constants.STATUS_FAILURE)
+        return Result(**info)
 
+    def _request_server(self, api, data):
         def _send_and_receive():
             try:
                 url = 'http://%(ip)s:%(port)d%(api)s' % (
@@ -85,19 +89,19 @@ class BaseVolumeDriver(object):
                 data['driver'] = self._driver_name
                 response = requests.post(url, json=data)
                 if not response.ok:
-                    return False, {'message': response.text}
+                    return False, response.text
 
                 return True, response.json()
 
             except Exception as ex:
                 return (False,
-                        {'message': 'Some exception:(%s) happened '
-                                    'during request to server' % str(ex)})
+                        'Some exception:(%s) happened '
+                        'during request to server' % str(ex))
 
         ret, info = _send_and_receive()
-        info['status'] = constants.STATUS_SUCCESS if ret else (
-            constants.STATUS_FAILURE)
-        return Result(**info)
+        if ret:
+            return Result(**info)
+        return Result(status=constants.STATUS_FAILURE, message=info)
 
     def __call__(self, argv):
         if not argv or len(argv) < 3:
