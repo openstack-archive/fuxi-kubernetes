@@ -10,17 +10,42 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+from stevedore import driver as import_driver
+from stevedore import extension
+
+from fuxi_kubernetes import exceptions
+from fuxi_kubernetes.flex_volume_drivers.server import utils
+
 
 class ServerCinder(object):
     # TODO(zengchen): implement it.
 
     def __init__(self, host_platform):
-        self._cinder_client = None
-        self._host = None
+        host_cls = import_driver.DriverManager(
+            'flex_volume_drivers.server.cinder.hosts',
+            host_platform).driver
+        self._cinder_client = utils.get_cinder_client()
+        self._host = host_cls(self._cinder_client)
 
     def is_attached(self, volume_id, host_name, **kwargs):
-        return False
+        volume = self._get_volume(volume_id)
+        if not volume.attachments:
+            return False
+
+        return self._host.is_attached(volume, host_name)
+
+    def attach(self, volume_id, host_name, **kwargs):
+        self._host.attach(self._get_volume(volume_id), host_name)
+
+    def _get_volume(self, volume_id):
+        try:
+            self._cinder_client.volumes.get(volume_id)
+        except Exception as ex:
+            raise exceptions.GetCinderVolumeExcept(volume_id, str(ex))
 
     @classmethod
     def is_support_host_platform(cls, host_platform):
-        return True
+        mgr = extension.ExtensionManager(
+            namespace='flex_volume_drivers.server.cinder.hosts',
+        )
+        return host_platform in [e.name for e in mgr]
