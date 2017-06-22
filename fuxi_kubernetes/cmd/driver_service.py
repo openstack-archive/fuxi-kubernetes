@@ -10,16 +10,17 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from oslo_serialization import jsonutils
+from oslo_log import log as logging
 import sys
 
-from fuxi_kubernetes.common import constants
-from fuxi_kubernetes.flex_volume_drivers.drivers.cinder import cinder
+from fuxi_kubernetes.common import config
+from fuxi_kubernetes.flex_volume_drivers.service import controller
 
 
-def main():
-    result = cinder.DriverCinder()(sys.argv[1:])
-    exit_code, fout = (0, sys.stdout) if (
-        result.status == constants.RESULT_SUCCESS) else (1, sys.stderr)
-    jsonutils.dumps(result(), fout)
-    sys.exit(exit_code)
+def start():
+    config.init(sys.argv[1:])
+    logging.setup(config.CONF, 'fuxi-kubernetes')
+
+    controller.init_volume_drivers()
+    controller.run("0.0.0.0", config.CONF.fuxi_k8s_port,
+                   debug=config.CONF.debug, threaded=True)

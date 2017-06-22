@@ -10,9 +10,25 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from fuxi_kubernetes.flex_volume_drivers.drivers import base
+__all__ = [
+    'list_fuxi_k8s_opts',
+]
+
+import itertools
+from kuryr.lib import opts as kuryr_opts
+
+from fuxi_kubernetes.common import config
 
 
-class DriverCinder(base.BaseVolumeDriver):
-    # TODO(zengchen): implement it.
-    pass
+def list_fuxi_k8s_opts():
+    auth_opts = kuryr_opts.get_keystoneauth_conf_options()
+
+    return [
+        ('DEFAULT', itertools.chain(config.default_opts,)),
+
+        (config.keystone_group.name,
+         itertools.chain(config.legacy_keystone_opts,)),
+
+        (config.cinder_group.name,
+         itertools.chain(config.cinder_opts, auth_opts,)),
+    ]

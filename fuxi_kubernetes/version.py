@@ -1,3 +1,5 @@
+# Copyright 2015 OpenStack Foundation
+#
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
 # not use this file except in compliance with the License. You may obtain
 # a copy of the License at
@@ -10,16 +12,6 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from oslo_serialization import jsonutils
-import sys
+import pbr.version
 
-from fuxi_kubernetes.common import constants
-from fuxi_kubernetes.flex_volume_drivers.drivers.cinder import cinder
-
-
-def main():
-    result = cinder.DriverCinder()(sys.argv[1:])
-    exit_code, fout = (0, sys.stdout) if (
-        result.status == constants.RESULT_SUCCESS) else (1, sys.stderr)
-    jsonutils.dumps(result(), fout)
-    sys.exit(exit_code)
+version_info = pbr.version.VersionInfo('fuxi-kubernetes')

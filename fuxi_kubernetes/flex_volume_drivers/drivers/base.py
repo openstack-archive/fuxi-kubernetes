@@ -35,6 +35,10 @@ class BaseVolumeDriver(object):
 
     Default_Result = Result(status=constants.STATUS_NOT_SUPPORT)
 
+    def __init__(self):
+        self._driver_service_ip = ''
+        self._driver_service_port = ''
+
     def init(self):
         return Result(status=constants.STATUS_SUCCESS)
 
@@ -76,6 +80,10 @@ class BaseVolumeDriver(object):
         if cmd not in constants.VOLUME_DRIVER_CMD:
             return self.Default_Result
 
+        self._driver_service_ip = argv[1]
+        self._driver_service_port = argv[2]
+        argv = argv[3:]
+
         def _load_json_param(param):
             try:
                 return jsonutils.loads(param)
@@ -85,7 +93,6 @@ class BaseVolumeDriver(object):
 
         try:
             miss_arg = exceptions.VolumeDriverCmdArgInvalid("miss arguments")
-            argv = argv[1:]
 
             if cmd == constants.CMD_INIT:
                 return self.init()

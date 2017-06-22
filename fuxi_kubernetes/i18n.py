@@ -10,16 +10,11 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from oslo_serialization import jsonutils
-import sys
+import oslo_i18n
 
-from fuxi_kubernetes.common import constants
-from fuxi_kubernetes.flex_volume_drivers.drivers.cinder import cinder
+DOMAIN = "fuxi-kubernetes"
 
+_translators = oslo_i18n.TranslatorFactory(domain=DOMAIN)
 
-def main():
-    result = cinder.DriverCinder()(sys.argv[1:])
-    exit_code, fout = (0, sys.stdout) if (
-        result.status == constants.RESULT_SUCCESS) else (1, sys.stderr)
-    jsonutils.dumps(result(), fout)
-    sys.exit(exit_code)
+# The primary translation function using the well-known name "_"
+_ = _translators.primary
