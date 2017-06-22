@@ -13,6 +13,8 @@
 from cinderclient import client as cinder_client
 from kuryr.lib import utils as kuryr_utils
 from os_brick.initiator import connector
+from oslo_concurrency import processutils
+import socket
 
 from fuxi_kubernetes.common import config as local_config
 
@@ -54,6 +56,19 @@ def brick_get_connector(protocol, driver=None, use_multipath=False,
         driver=driver, use_multipath=use_multipath,
         device_scan_attempts=device_scan_attempts,
         *args, **kwargs)
+
+
+def get_local_hostname():
+    host_name = local_config.CONF[
+        local_config.flexvolume_driver_group.name].host_name
+    if not host_name:
+        host_name = socket.gethostname()
+    return host_name.lower()
+
+
+def execute_cmd(*cmd):
+    return processutils.execute(*cmd, run_as_root=True,
+                                root_helper=get_root_helper())
 
 
 def _get_keystone_session(conf_group, **kwargs):

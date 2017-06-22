@@ -50,7 +50,7 @@ def init_volume_drivers():
 def api_wrapper(f):
     def _response(ret, info):
         if ret:
-            info['status'] = constants.STATUS_SUCCESS
+            info.setdefault('status', constants.STATUS_SUCCESS)
         else:
             info = {'status': constants.STATUS_FAILURE, 'message': info}
         return flask.jsonify(base.Result(**info)())
@@ -58,13 +58,16 @@ def api_wrapper(f):
     @functools.wraps(f)
     def wrapper(*args, **kwargs):
         data = flask.request.get_json(force=True)
-        driver = APP.volume_drivers.get(data.get('driver'))
+        driver_name = data.pop('driver', '')
+        driver = APP.volume_drivers.get(driver_name)
         if not driver:
             return _response(
-                False, 'Unknow FlexVolume driver:%s' % data.get('driver'))
+                False, 'Unknow FlexVolume driver:(%s)' % driver_name)
 
         try:
             return _response(True, f(driver, data))
+        except exceptions.NotSupportedCommand:
+            return _response(True, {'status': constants.STATUS_NOT_SUPPORT})
         except Exception as ex:
             return _response(False, str(ex))
 
@@ -73,5 +76,59 @@ def api_wrapper(f):
 
 @APP.route(constants.SERVER_API_IS_ATTACHED, methods=['POST'])
 @api_wrapper
-def is_attached(driver=None, param=None):
-    return {'attached': driver.is_attached(**param)}
+def is_attached(driver=None, params=None):
+    return {'attached': driver.is_attached(**params)}
+
+
+@APP.route(constants.SERVER_API_ATTACH, methods=['POST'])
+@api_wrapper
+def attach(driver=None, params=None):
+    return {'device': driver.attach(**params)}
+
+
+@APP.route(constants.SERVER_API_WAIT_FOR_ATTACH, methods=['POST'])
+@api_wrapper
+def wait_for_attach(driver=None, params=None):
+    return {'device': driver.wait_for_attach(**params)}
+
+
+@APP.route(constants.SERVER_API_MOUNT_DEVICE, methods=['POST'])
+@api_wrapper
+def mount_device(driver=None, params=None):
+    driver.mount_device(**params)
+    return {}
+
+
+@APP.route(constants.SERVER_API_DETACH, methods=['POST'])
+@api_wrapper
+def detach(driver=None, params=None):
+    driver.detach(**params)
+    return {}
+
+
+@APP.route(constants.SERVER_API_WAIT_FOR_DETACH, methods=['POST'])
+@api_wrapper
+def wait_for_detach(driver=None, params=None):
+    driver.wait_for_detach(**params)
+    return {}
+
+
+@APP.route(constants.SERVER_API_UNMOUNT_DEVICE, methods=['POST'])
+@api_wrapper
+def unmount_device(driver=None, params=None):
+    driver.unmount_device(**params)
+    return {}
+
+
+@APP.route(constants.SERVER_API_MOUNT, methods=['POST'])
+@api_wrapper
+def mount(driver=None, params=None):
+    driver.mount(**params)
+    return {}
+
+
+@APP.route(constants.SERVER_API_UNMOUNT, methods=['POST'])
+@api_wrapper
+def unmount(driver=None, params=None):
+    driver.unmount(**params)
+    return {}
