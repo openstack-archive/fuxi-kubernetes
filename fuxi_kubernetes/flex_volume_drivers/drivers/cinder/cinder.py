@@ -21,9 +21,25 @@ class DriverCinder(base.BaseVolumeDriver):
         super(DriverCinder, self).__init__()
         self._driver_name = constants.VOLUME_DRIVER_CINDER
 
+    def get_volume_name(self, **kwargs):
+        name = kwargs.get(constants.CINDER_VOLUME_ATTR_VOLUME_ID)
+        result = self._get_result(name)
+        if name:
+            result.volumeName = name
+        else:
+            result.message = 'Can not get volume name'
+        return result
+
     def is_attached(self, host_name, **kwargs):
         return self._request_server(
             constants.SERVER_API_IS_ATTACHED,
+            {'host_name': host_name,
+             'volume_id': kwargs.get(constants.CINDER_VOLUME_ATTR_VOLUME_ID)}
+        )
+
+    def attach(self, host_name, **kwargs):
+        return self._request_server(
+            constants.SERVER_API_ATTACH,
             {'host_name': host_name,
              'volume_id': kwargs.get(constants.CINDER_VOLUME_ATTR_VOLUME_ID)}
         )

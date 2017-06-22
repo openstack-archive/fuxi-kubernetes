@@ -46,7 +46,11 @@ fi
 config_file=/etc/fuxi-kubernetes/fuxi_kubernetes.conf
 ip=`grep my_ip $config_file | awk '{print $NF}'`
 port=`grep fuxi_k8s_port $config_file | awk '{print $NF}'`
+<<<<<<< HEAD:fuxi_kubernetes/flex_volume_drivers/drivers/cinder/cinder.sh
 out=`fuxi-k8s-volume-driver-cinder $ip $port "$@"`
+=======
+out=`python fuxi-k8s-volume-driver-cinder $ip $port $*`
+>>>>>>> fde3306... Implemet flexvolume driver of Cinder:fuxi_kubernetes/flex_volume_drivers/drivers/cinder/cinder.sh
 code=$?
 if [ $code -eq 0 ]; then
     log "$out"
