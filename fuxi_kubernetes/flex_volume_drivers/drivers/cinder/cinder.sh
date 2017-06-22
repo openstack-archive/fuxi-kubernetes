@@ -30,7 +30,7 @@ usage() {
     err "\t$0 attach <json params> <nodename>"
     err "\t$0 waitforattach <mount device> <json params>"
     err "\t$0 mountdevice <mount dir> <mount device> <json params>"
-    err "\t$0 detach <mount device> <nodename>"
+    err "\t$0 detach <pv or volume name> <nodename>"
     err "\t$0 waitfordetach <mount device>"
     err "\t$0 unmountdevice <mount device>"
     err "\t$0 mount <mount dir> <json params>"
