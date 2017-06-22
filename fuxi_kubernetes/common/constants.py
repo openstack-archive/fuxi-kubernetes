@@ -46,14 +46,15 @@ VOLUME_DRIVER_CMD_OPT_ARG = (
     ARG_RW,
     ARG_SECRET,
     ARG_FSGROUP,
-    ARG_MOUNTS_DIR
+    ARG_MOUNTS_DIR,
+    ARG_PV_OR_VOLUME_NAME,
 ) = (
     "kubernetes.io/fsType",
     "kubernetes.io/readwrite",
     "kubernetes.io/secret",
     "kubernetes.io/fsGroup",
     "kubernetes.io/mountsDir",
-
+    "kubernetes.io/pvOrVolumeName",
 )
 
 
