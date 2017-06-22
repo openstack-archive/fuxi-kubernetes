@@ -15,15 +15,79 @@ from fuxi_kubernetes.flex_volume_drivers.drivers import base
 
 
 class DriverCinder(base.BaseVolumeDriver):
-    # TODO(zengchen): implement it.
 
     def __init__(self):
         super(DriverCinder, self).__init__()
         self._driver_name = constants.VOLUME_DRIVER_CINDER
 
+    def get_volume_name(self, **kwargs):
+        name = self._volumeid(kwargs)
+        if name:
+            return self._generate_result(True, {'volumeName': name})
+        return self._generate_result(
+            False, {'message': 'Can not get volume name'})
+
     def is_attached(self, host_name, **kwargs):
         return self._request_server(
             constants.SERVER_API_IS_ATTACHED,
             {'host_name': host_name,
-             'volume_id': kwargs.get(constants.CINDER_VOLUME_ATTR_VOLUME_ID)}
+             'volume_id': self._volumeid(kwargs)}
         )
+
+    def attach(self, host_name, **kwargs):
+        return self._request_server(
+            constants.SERVER_API_ATTACH,
+            {'host_name': host_name,
+             'volume_id': self._volumeid(kwargs)}
+        )
+
+    def wait_for_attach(self, device_path, **kwargs):
+        params = {'device_path': device_path}
+        return self._request_server(
+            constants.SERVER_API_WAIT_FOR_ATTACH,
+            params
+        )
+
+    def mount_device(self, device_mount_path, device_path, **kwargs):
+        params = {
+            'device_mount_path': device_mount_path,
+            'device_path': device_path
+        }
+        return self._request_server(
+            constants.SERVER_API_MOUNT_DEVICE,
+            params
+        )
+
+    def detach(self, device_path, host_name):
+        return self._request_server(
+            constants.SERVER_API_DETACH,
+            {'device_path': device_path, 'host_name': host_name}
+        )
+
+    def wait_for_detach(self, device_path):
+        return self._request_server(
+            constants.SERVER_API_WAIT_FOR_DETACH,
+            {'device_path': device_path}
+        )
+
+    def unmount_device(self, device_mount_path):
+        return self._request_server(
+            constants.SERVER_API_UNMOUNT_DEVICE,
+            {'device_mount_path': device_mount_path}
+        )
+
+    def mount(self, mount_dir, **kwargs):
+        params = {'mount_dir': mount_dir}
+        return self._request_server(
+            constants.SERVER_API_MOUNT,
+            params
+        )
+
+    def unmount(self, mount_dir):
+        return self._request_server(
+            constants.SERVER_API_UNMOUNT,
+            {'mount_dir': mount_dir}
+        )
+
+    def _volumeid(self, params):
+        return params.get(constants.CINDER_VOLUME_ATTR_VOLUME_ID)
