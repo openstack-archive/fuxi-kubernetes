@@ -61,15 +61,10 @@ def api_wrapper(f):
                 False,
                 {'message': 'Unknow volume driver:%s' % data.get('driver')})
 
-        ret = True
-        info = None
         try:
-            info = f(driver, data)
+            return _response(True, f(driver, data))
         except Exception as ex:
-            ret = False
-            info = {'message': str(ex)}
-
-        return _response(ret, info)
+            return _response(False, {'message': str(ex)})
 
     return wrapper
 
@@ -78,3 +73,9 @@ def api_wrapper(f):
 @api_wrapper
 def is_attached(driver=None, param=None):
     return {'attached': driver.is_attached(**param)}
+
+
+@APP.route(constants.SERVER_API_ATTACH, methods=['POST'])
+@api_wrapper
+def attach(driver=None, param=None):
+    return {'attached': driver.attach(**param)}
