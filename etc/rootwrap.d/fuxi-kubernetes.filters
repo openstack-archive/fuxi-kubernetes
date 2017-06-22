@@ -17,3 +17,7 @@ iscsiadm: CommandFilter, iscsiadm, root
 sg_scan: CommandFilter, sg_scan, root
 systool: CommandFilter, systool, root
 cat: CommandFilter, cat, root
+
+# server/cinder/bare_metal_host.py
+rm: CommandFilter, rm, root
+ln: CommandFilter, ln, root
