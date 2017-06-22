@@ -24,5 +24,5 @@ def main():
     logging.setup(config.CONF, 'fuxi-kubernetes')
 
     controller.init_volume_drivers()
-    controller.start("0.0.0.0", config.CONF.fuxi_k8s_port,
+    controller.start("0.0.0.0", config.CONF.driver_server_port,
                      debug=config.CONF.debug, threaded=True)
