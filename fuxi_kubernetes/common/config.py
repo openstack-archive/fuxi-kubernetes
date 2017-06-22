@@ -26,6 +26,9 @@ flexvolume_driver_group = cfg.OptGroup(
     help=_('Configuration options for FlexVolume driver'))
 
 flexvolume_driver_opts = [
+    cfg.HostnameOpt('host_name',
+                    help=_('Host name of machine '
+                           'on which FlexVolume driver runs.')),
     cfg.HostAddressOpt('node_ip',
                        help=_('IP address of machine '
                               'on which FlexVolume driver runs.')),
