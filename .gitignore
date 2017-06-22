@@ -30,6 +30,7 @@ nosetests.xml
 .venv
 .log
 *.cover
+*.sample
 
 # Translations
 *.mo
