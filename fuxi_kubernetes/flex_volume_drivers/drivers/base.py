@@ -58,7 +58,7 @@ class BaseVolumeDriver(object):
     def mount_device(self, device_mount_path, device_path, **kwargs):
         return self.default_result
 
-    def detach(self, device_path, host_name):
+    def detach(self, pv_or_volume_name, host_name):
         return self.default_result
 
     def wait_for_detach(self, device_path):
@@ -72,6 +72,11 @@ class BaseVolumeDriver(object):
 
     def unmount(self, mount_dir):
         return self.default_result
+
+    def _generate_result(self, ret, info):
+        info['status'] = constants.STATUS_SUCCESS if ret else (
+            constants.STATUS_FAILURE)
+        return Result(**info)
 
     def _request_server(self, api, data):
         def _send_and_receive():
