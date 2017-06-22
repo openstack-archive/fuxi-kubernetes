@@ -10,18 +10,17 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-"""Start FlexVolume driver of Cinder"""
+__all__ = [
+    'list_fuxi_k8s_opts',
+]
 
-from oslo_serialization import jsonutils
-import sys
+import itertools
 
-from fuxi_kubernetes.common import constants
-from fuxi_kubernetes.flex_volume_drivers.drivers.cinder import cinder
+from fuxi_kubernetes.common import config
 
 
-def main():
-    result = cinder.DriverCinder()(sys.argv[1:])
-    exit_code, fout = (0, sys.stdout) if (
-        result.status == constants.STATUS_SUCCESS) else (1, sys.stderr)
-    jsonutils.dumps(result(), fout)
-    sys.exit(exit_code)
+def list_fuxi_k8s_opts():
+
+    return [
+        ('DEFAULT', itertools.chain(config.default_opts,)),
+    ]

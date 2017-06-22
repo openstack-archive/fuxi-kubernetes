@@ -1,0 +1,11 @@
+[DEFAULT]
+
+#
+# From fuxi-kubernetes
+#
+
+# IP address of this machine. (unknown value)
+#my_ip = <None>
+
+# Port for server of fuxi-kubernetes volume driver. (integer value)
+#fuxi_k8s_port = 7878
