@@ -73,6 +73,11 @@ class BaseVolumeDriver(object):
     def unmount(self, mount_dir):
         return self.default_result
 
+    def _generate_result(self, ret, info):
+        info['status'] = constants.STATUS_SUCCESS if ret else (
+            constants.STATUS_FAILURE)
+        return Result(**info)
+
     def _request_server(self, api, data):
         def _send_and_receive():
             try:
