@@ -74,3 +74,9 @@ def api_wrapper(f):
 @api_wrapper
 def is_attached(driver=None, param=None):
     return {'attached': driver.is_attached(**param)}
+
+
+@APP.route(constants.SERVER_API_ATTACH, methods=['POST'])
+@api_wrapper
+def attach(driver=None, param=None):
+    return {'attached': driver.attach(**param)}
