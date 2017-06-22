@@ -10,10 +10,13 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import pbr.version
+import oslo_i18n
 
 from fuxi_kubernetes.common import constants
 
+DOMAIN = constants.PROJECT_NAME
 
-__version__ = pbr.version.VersionInfo(
-    constants.PROJECT_NAME).version_string()
+_translators = oslo_i18n.TranslatorFactory(domain=DOMAIN)
+
+# The primary translation function using the well-known name "_"
+_ = _translators.primary

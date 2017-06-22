@@ -11,6 +11,9 @@
 # under the License.
 
 
+PROJECT_NAME = 'fuxi-kubernetes'
+
+
 VOLUME_DRIVER_CMD = (
     CMD_INIT,
     CMD_GET_VOLUME_NAME,
