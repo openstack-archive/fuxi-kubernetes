@@ -10,18 +10,6 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+import pbr.version
 
-class FuxiKubernetesException(Exception):
-    """Default Fuxi-kubernetes exception"""
-
-
-class InvalidVolumeDriverCmdParameter(FuxiKubernetesException):
-    def __init__(self, reason):
-        super(InvalidVolumeDriverCmdParameter, self).__init__(
-            "Invalid FlexVolume driver cmd parameter, reason:%s" % reason)
-
-
-class LoadVolumeDriverException(FuxiKubernetesException):
-    def __init__(self, reason):
-        super(LoadVolumeDriverException, self).__init__(
-            "Load volume driver failed, reason: %s" % reason)
+version_info = pbr.version.VersionInfo('fuxi-kubernetes')

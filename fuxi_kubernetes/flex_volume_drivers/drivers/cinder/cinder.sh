@@ -43,7 +43,9 @@ if [ $# -lt 1 ]; then
     usage
 fi
 
-out=$(fuxi-k8s-volume-driver-cinder "$@")
+config_file=/etc/fuxi-kubernetes/fuxi_kubernetes.conf
+port=$(grep driver_server_port $config_file | awk '{print $NF}')
+out=$(fuxi-k8s-volume-driver-cinder $port "$@")
 code=$?
 if [ $code -eq 0 ]; then
     log "$out"
