@@ -15,12 +15,14 @@ __all__ = [
 ]
 
 import itertools
+from kuryr.lib import opts as kuryr_opts
 from oslo_log import _options
 
 from fuxi_kubernetes.common import config
 
 
 def list_fuxi_k8s_opts():
+    auth_opts = kuryr_opts.get_keystoneauth_conf_options()
 
     return [
         ('DEFAULT',
@@ -28,4 +30,7 @@ def list_fuxi_k8s_opts():
 
         (config.flexvolume_driver_group.name,
          itertools.chain(config.flexvolume_driver_opts,)),
+
+        (config.cinder_group.name,
+         itertools.chain(config.cinder_opts, auth_opts,)),
     ]
