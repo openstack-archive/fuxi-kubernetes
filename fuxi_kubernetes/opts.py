@@ -15,14 +15,19 @@ __all__ = [
 ]
 
 import itertools
+from kuryr.lib import opts as kuryr_opts
 from oslo_log import _options
 
 from fuxi_kubernetes.common import config
 
 
 def list_fuxi_k8s_opts():
+    auth_opts = kuryr_opts.get_keystoneauth_conf_options()
 
     return [
         ('DEFAULT',
          itertools.chain(config.default_opts, _options.list_opts()[0][1])),
+
+        (config.cinder_group.name,
+         itertools.chain(config.cinder_opts, auth_opts,)),
     ]
