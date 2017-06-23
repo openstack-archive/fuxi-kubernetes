@@ -11,6 +11,7 @@
 # under the License.
 
 from oslo_serialization import jsonutils
+import requests
 
 from fuxi_kubernetes.common import constants
 from fuxi_kubernetes import exceptions
@@ -34,6 +35,11 @@ class Result(object):
 class BaseVolumeDriver(object):
 
     Default_Result = Result(status=constants.STATUS_NOT_SUPPORT)
+
+    def __init__(self):
+        self._driver_server_ip = ''
+        self._driver_server_port = ''
+        self._driver_name = ''
 
     def init(self):
         return Result(status=constants.STATUS_SUCCESS)
@@ -68,13 +74,42 @@ class BaseVolumeDriver(object):
     def unmount(self, mount_dir):
         return self.Default_Result
 
+    def _request_server(self, api, data):
+
+        def _send_and_receive():
+            try:
+                url = 'http://%(ip)s:%(port)d%(api)s' % (
+                    {'ip': self._driver_server_ip,
+                     'port': self._driver_server_port,
+                     'api': api})
+                data['driver'] = self._driver_name
+                response = requests.post(url, json=data)
+                if not response.ok:
+                    return False, {'message': response.text}
+
+                return True, response.json()
+
+            except Exception as ex:
+                return (False,
+                        {'message': 'Some exception:(%s) happened '
+                                    'during request to server' % str(ex)})
+
+        ret, info = _send_and_receive()
+        info['status'] = constants.STATUS_SUCCESS if ret else (
+            constants.STATUS_FAILURE)
+        return Result(**info)
+
     def __call__(self, argv):
-        if not argv:
+        if not argv or len(argv) < 3:
             return self.Default_Result
 
-        cmd = argv[0]
+        cmd = argv[2]
         if cmd not in constants.VOLUME_DRIVER_CMD:
             return self.Default_Result
+
+        self._driver_server_ip = argv[0]
+        self._driver_server_port = int(argv[1])
+        argv = argv[3:]
 
         def _load_json_param(param):
             try:
@@ -85,7 +120,6 @@ class BaseVolumeDriver(object):
 
         try:
             miss_arg = exceptions.VolumeDriverCmdArgInvalid("miss arguments")
-            argv = argv[1:]
 
             if cmd == constants.CMD_INIT:
                 return self.init()

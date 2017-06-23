@@ -15,6 +15,7 @@ __all__ = [
 ]
 
 import itertools
+from oslo_log import _options
 
 from fuxi_kubernetes.common import config
 
@@ -22,5 +23,6 @@ from fuxi_kubernetes.common import config
 def list_fuxi_k8s_opts():
 
     return [
-        ('DEFAULT', itertools.chain(config.default_opts,)),
+        ('DEFAULT',
+         itertools.chain(config.default_opts, _options.list_opts()[0][1])),
     ]
