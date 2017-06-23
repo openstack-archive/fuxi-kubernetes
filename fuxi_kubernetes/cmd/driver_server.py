@@ -12,6 +12,17 @@
 
 """Start server of FlexVolume driver"""
 
+from oslo_log import log as logging
+import sys
+
+from fuxi_kubernetes.common import config
+from fuxi_kubernetes.flex_volume_drivers.server import controller
+
 
 def main():
-    pass
+    config.init(sys.argv[1:])
+    logging.setup(config.CONF, 'fuxi-kubernetes')
+
+    controller.init_volume_drivers()
+    controller.start("0.0.0.0", config.CONF.fuxi_k8s_port,
+                     debug=config.CONF.debug, threaded=True)
