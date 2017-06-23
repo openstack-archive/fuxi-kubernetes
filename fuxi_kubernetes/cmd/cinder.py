@@ -21,7 +21,5 @@ from fuxi_kubernetes.flex_volume_drivers.drivers.cinder import cinder
 
 def main():
     result = cinder.DriverCinder()(sys.argv[1:])
-    exit_code, fout = (0, sys.stdout) if (
-        result.status == constants.STATUS_SUCCESS) else (1, sys.stderr)
-    jsonutils.dumps(result(), fout)
-    sys.exit(exit_code)
+    print(jsonutils.dumps(result()))
+    sys.exit((0 if result.status == constants.STATUS_SUCCESS else 1))

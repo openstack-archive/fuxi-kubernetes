@@ -11,8 +11,10 @@
 # under the License.
 
 from oslo_config import cfg
+from oslo_log import log as logging
 
 from fuxi_kubernetes.i18n import _
+from fuxi_kubernetes.version import version_info
 
 
 default_opts = [
@@ -21,8 +23,18 @@ default_opts = [
     cfg.IntOpt('fuxi_k8s_port',
                default=7878,
                help=_('Port for server of fuxi-kubernetes volume driver.')),
+    cfg.StrOpt('host_platform',
+               default='baremetal',
+               help=_('The environment on which volume driver runs. '
+                      'optional values are: baremetal')),
 ]
 
 
 CONF = cfg.CONF
+logging.register_options(CONF)
 CONF.register_opts(default_opts)
+
+
+def init(args, **kwargs):
+    cfg.CONF(args=args, project='fuxi-kubernetes',
+             version=version_info.release_string(), **kwargs)

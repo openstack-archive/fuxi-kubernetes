@@ -30,6 +30,6 @@ class TestBaseVolumeDriver(base.TestCase):
                          self._driver(['abc']).status)
 
     def test_load_json_fail(self):
-        r = self._driver(['attach', 'abc', 'abc'])
+        r = self._driver(['', '123', 'attach', 'abc', 'abc'])
         self.assertEqual(constants.STATUS_FAILURE, r.status)
         self.assertIn('can not load json argument', r.message)
