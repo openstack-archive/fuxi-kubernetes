@@ -15,6 +15,7 @@ __all__ = [
 ]
 
 import itertools
+from oslo_log import _options
 
 from fuxi_kubernetes.common import config
 
@@ -22,6 +23,9 @@ from fuxi_kubernetes.common import config
 def list_fuxi_k8s_opts():
 
     return [
+        ('DEFAULT',
+         itertools.chain(_options.list_opts()[0][1],)),
+
         (config.flexvolume_driver_group.name,
          itertools.chain(config.flexvolume_driver_opts,)),
     ]

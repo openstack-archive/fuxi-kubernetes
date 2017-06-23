@@ -11,8 +11,11 @@
 # under the License.
 
 from oslo_config import cfg
+from oslo_log import log as logging
 
+from fuxi_kubernetes.common import constants
 from fuxi_kubernetes.i18n import _
+from fuxi_kubernetes.version import version_info
 
 
 flexvolume_driver_group = cfg.OptGroup(
@@ -27,8 +30,18 @@ flexvolume_driver_opts = [
     cfg.IntOpt('driver_server_port',
                default=7878,
                help=_('Port for the server of FlexVolume driver.')),
+    cfg.StrOpt('host_platform',
+               default='baremetal',
+               help=_('The platform on which FlexVolume driver runs. '
+                      'Optional values are: baremetal')),
 ]
 
 
 CONF = cfg.CONF
+logging.register_options(CONF)
 CONF.register_opts(flexvolume_driver_opts, flexvolume_driver_group.name)
+
+
+def init(args, **kwargs):
+    cfg.CONF(args=args, project=constants.PROJECT_NAME,
+             version=version_info.release_string(), **kwargs)
