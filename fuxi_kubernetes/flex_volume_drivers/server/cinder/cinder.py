@@ -11,17 +11,16 @@
 # under the License.
 
 
-class FuxiKubernetesException(Exception):
-    """Default Fuxi-kubernetes exception"""
+class ServerCinder(object):
+    # TODO(zengchen): implement it.
 
+    def __init__(self, host_platform):
+        self._cinder_client = None
+        self._host = None
 
-class VolumeDriverCmdArgInvalid(FuxiKubernetesException):
-    def __init__(self, reason):
-        super(VolumeDriverCmdArgInvalid, self).__init__(
-            "Invalid volume driver cmd argument, reason: %s" % reason)
+    def is_attached(self, volume_id, host_name, **kwargs):
+        return False
 
-
-class LoadVolumeDriverExcept(FuxiKubernetesException):
-    def __init__(self, reason):
-        super(LoadVolumeDriverExcept, self).__init__(
-            "Load volume driver failed, reason: %s" % reason)
+    @classmethod
+    def is_support_host_platform(cls, host_platform):
+        return True

@@ -10,9 +10,20 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+from fuxi_kubernetes.common import constants
 from fuxi_kubernetes.flex_volume_drivers.drivers import base
 
 
 class DriverCinder(base.BaseVolumeDriver):
     # TODO(zengchen): implement it.
-    pass
+
+    def __init__(self):
+        super(DriverCinder, self).__init__()
+        self._driver_name = constants.VOLUME_DRIVER_CINDER
+
+    def is_attached(self, host_name, **kwargs):
+        return self._request_server(
+            constants.SERVER_API_IS_ATTACHED,
+            {'host_name': host_name,
+             'volume_id': kwargs.get(constants.CINDER_VOLUME_ATTR_VOLUME_ID)}
+        )
