@@ -10,6 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+from kuryr.lib import config as kuryr_config
+import os
 from oslo_config import cfg
 from oslo_log import log as logging
 
@@ -30,9 +32,25 @@ default_opts = [
 ]
 
 
+cinder_group = cfg.OptGroup(
+    'cinder',
+    title='Cinder Options',
+    help=_('Configuration options for OpenStack Cinder'))
+
+
+cinder_opts = [
+    cfg.StrOpt('region_name',
+               default=os.environ.get('REGION'),
+               help=_('Region name of this node. This is used when picking'
+                      ' the URL in the service catalog.')),
+]
+
+
 CONF = cfg.CONF
 logging.register_options(CONF)
 CONF.register_opts(default_opts)
+CONF.register_opts(cinder_opts, group=cinder_group.name)
+kuryr_config.register_keystoneauth_opts(CONF, cinder_group.name)
 
 
 def init(args, **kwargs):
