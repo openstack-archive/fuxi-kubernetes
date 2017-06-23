@@ -29,6 +29,10 @@ default_opts = [
                default='baremetal',
                help=_('The environment on which volume driver runs. '
                       'optional values are: baremetal')),
+    cfg.StrOpt('rootwrap_config',
+               default='/etc/fuxi-kubernetes/rootwrap.conf',
+               help=_('Path to the rootwrap configuration file to use for '
+                      'running commands as root.')),
 ]
 
 
