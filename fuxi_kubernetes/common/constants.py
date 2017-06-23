@@ -63,3 +63,42 @@ VOLUME_DRIVER_CMD_RESULT_STATUS = (
     'Failed',
     'Not supported',
 )
+
+
+VOLUME_DRIVER_TYPE = (
+    VOLUME_DRIVER_CINDER,
+    VOLUME_DRIVER_MANICLA,
+) = (
+    'Cinder',
+    'Manila'
+)
+
+
+VOLUME_DRIVER_SERVER_API = (
+    SERVER_API_IS_ATTACHED,
+    SERVER_API_ATTACH,
+    SERVER_API_WAIT_FOR_ATTACH,
+    SERVER_API_MOUNT_DEVICE,
+    SERVER_API_DETACH,
+    SERVER_API_WAIT_FOR_DETACH,
+    SERVER_API_UNMOUNT_DEVICE,
+    SERVER_API_MOUNT,
+    SERVER_API_UNMOUNT
+) = (
+    '/VolumeDriver.is_attached',
+    '/VolumeDriver.attach',
+    '/VolumeDriver.wait_for_attach',
+    '/VolumeDriver.mount_device',
+    '/VolumeDriver.detach',
+    '/VolumeDriver.wait_for_detach',
+    '/VolumeDriver.unmount_device',
+    '/VolumeDriver.mount',
+    '/VolumeDriver.unmount',
+)
+
+
+CINDER_VOLUME_ATTR_KEY = (
+    CINDER_VOLUME_ATTR_VOLUME_ID,
+) = (
+    'VolumeID',
+)
