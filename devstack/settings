@@ -1,0 +1,8 @@
+# common variables
+FK_SERVICE_NAME=fuxi-kubernetes
+FK_SERVICE_TYPE=k8s-flexvolume-plugin
+FK_CODE_DIR=$DEST/$FK_SERVICE_NAME
+FK_CONF_DIR=${FK_CONF_DIR:-/etc/$FK_SERVICE_NAME}
+FK_BIN_DIR=$(get_python_exec_prefix)
+FK_MAIN_CONF_FILE=$FK_CONF_DIR/fuxi_kubernetes.conf
+FK_AUTH_CACHE_DIR=${FK_AUTH_CACHE_DIR:-/var/cache/$FK_SERVICE_NAME}
