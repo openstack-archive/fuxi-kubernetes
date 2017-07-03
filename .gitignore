@@ -30,7 +30,7 @@ nosetests.xml
 .venv
 .log
 *.cover
-*.sample
+fuxi_kubernetes.conf.sample
 
 # Translations
 *.mo
