@@ -10,10 +10,18 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import pbr.version
+__all__ = [
+    'list_fuxi_k8s_opts',
+]
 
-from fuxi_kubernetes.common import constants
+import itertools
+
+from fuxi_kubernetes.common import config
 
 
-__version__ = pbr.version.VersionInfo(
-    constants.PROJECT_NAME).version_string()
+def list_fuxi_k8s_opts():
+
+    return [
+        (config.flexvolume_driver_group.name,
+         itertools.chain(config.flexvolume_driver_opts,)),
+    ]
