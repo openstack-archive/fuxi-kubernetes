@@ -14,6 +14,11 @@
 class Controller(object):
     """Controller provisions pv for pvc and deletes released pv"""
 
+    def __init__(self):
+        self._volume_plugins = {}
+
+        self._load_volume_plugins()
+
     def start(self):
         pass
 
@@ -22,3 +27,9 @@ class Controller(object):
 
     def wait(self):
         pass
+
+    def _load_volume_plugins(self):
+        mgr = extension.ExtensionManager(
+            namespace='volume_provisioner.plugins',
+            invoke_on_load=True)
+        self._volume_plugins = {e.name: e.obj for e in mgr}
