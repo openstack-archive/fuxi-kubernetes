@@ -27,7 +27,7 @@ class VolumeOption(object):
 
         :param pv_reclaim_policy: string
         :param pv_name: string
-        :param pvc: kubernets.V1PersistentVolumeClaim
+        :param pvc: kubernetes.client.V1PersistentVolumeClaim
         :param parameters: dict
         """
 
@@ -45,12 +45,12 @@ class ProvisionPlugin(object):
         """Provision a new pv
 
         :param volume_option: VolumeOption
-        :returns: kubernets.V1PersistentVolume
+        :returns: kubernetes.client.V1PersistentVolume
         """
 
     @abstractmethod
     def delete(slef, pv):
         """Delete a pv
 
-        :param pv: kubernets.V1PersistentVolume
+        :param pv: kubernetes.client.V1PersistentVolume
         """

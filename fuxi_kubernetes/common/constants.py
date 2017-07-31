@@ -15,6 +15,43 @@ PROJECT_NAME = 'fuxi-kubernetes'
 
 LOCAL_HOST = '0.0.0.0'
 
+KUBERNETES_API_VERSION = 'v1'
+
+KUBERNETES_VOLUME_DYNAMICALLY_CREATED_BY_KEY = "kubernetes.io/createdby"
+
+
+KUBERNETES_RESOURCE_KIND = (
+    KIND_PERSISTENT_VOLUME,
+) = (
+    'PersistentVolume',
+)
+
+
+KUBERNETES_PV_CAPACITY = (
+    PV_CAPACITY_STORAGE,
+) = (
+    'storage',
+)
+
+
+KUBERNETES_FLEX_VOLUME_DRIVER = (
+    FLEX_VOLUME_DRIVER_CINDER,
+) = (
+    'openstack/cinder',
+)
+
+
+KUBERNETES_PV_ACCESS_MODES = (
+    READ_WRITE_ONCE,
+    READ_ONLY_MANY,
+    READ_WRITEMANY,
+) = (
+    'ReadWriteOnce',
+    'ReadOnlyMany',
+    'ReadWriteMany'
+)
+
+
 VOLUME_DRIVER_CMD = (
     CMD_INIT,
     CMD_GET_VOLUME_NAME,
