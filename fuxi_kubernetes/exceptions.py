@@ -58,3 +58,17 @@ class NotMatchedHost(FuxiKubernetesException):
         super(NotMatchedHost, self).__init__(
             'Expect running on: %s, but receive the host name: %s' % (
                 expect_host_name, actual_host_name))
+
+
+class CreatePersistentVolumeException(FuxiKubernetesException):
+    def __init__(self, volume_info, reason):
+        super(CreatePersistentVolumeException, self).__init__(
+            'Create persistent volume:(%s) failed, reason:%s' % (
+                volume_info, reason))
+
+
+class DeletePersistentVolumeException(FuxiKubernetesException):
+    def __init__(self, volume_info, reason):
+        super(DeletePersistentVolumeException, self).__init__(
+            'Delete persistent volume:(%s) failed, reason:%s' % (
+                volume_info, reason))
