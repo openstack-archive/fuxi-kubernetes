@@ -14,7 +14,7 @@ from stevedore import driver as import_driver
 from stevedore import extension
 
 from fuxi_kubernetes import exceptions
-from fuxi_kubernetes.flex_volume_drivers.server import utils
+from fuxi_kubernetes import utils
 
 
 class ServerCinder(object):
