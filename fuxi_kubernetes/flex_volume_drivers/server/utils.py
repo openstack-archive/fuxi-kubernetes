@@ -69,20 +69,3 @@ def get_local_hostname():
 def execute_cmd(*cmd):
     return processutils.execute(*cmd, run_as_root=True,
                                 root_helper=get_root_helper())
-
-
-def _get_keystone_session(conf_group, **kwargs):
-    auth_plugin = kuryr_utils.get_auth_plugin(conf_group)
-    session = kuryr_utils.get_keystone_session(conf_group, auth_plugin)
-    return session, auth_plugin
-
-
-def get_cinder_client(*args, **kwargs):
-    session, auth_plugin = _get_keystone_session(
-        local_config.cinder_group.name)
-
-    return cinder_client.Client(
-        session=session, auth=auth_plugin,
-        region_name=local_config.CONF[
-            local_config.cinder_group.name].region_name,
-        version=2)
