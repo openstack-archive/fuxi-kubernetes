@@ -42,6 +42,7 @@ enable_service c-sch
 # Fuxi-kubernetes
 enable_service fuxi-kubernetes
 enable_service fuxi-k8s-volume-driver-server
+enable_service fuxi-k8s-volume-provisioner
 
 # dependencies
 enable_service mysql

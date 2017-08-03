@@ -58,11 +58,20 @@ if is_service_enabled fuxi-kubernetes; then
         if is_service_enabled fuxi-k8s-volume-driver-server; then
            run_process fuxi-k8s-volume-driver-server "$FK_BIN_DIR/fuxi-k8s-volume-driver-server --config-file $FK_MAIN_CONF_FILE"
         fi
+
+        if is_service_enabled fuxi-k8s-volume-provisioner; then
+           run_process fuxi-k8s-volume-provisioner "$FK_BIN_DIR/fuxi-k8s-volume-provisioner --config-file $FK_MAIN_CONF_FILE"
+        fi
+
     fi
 
     if [[ "$1" == "unstack" ]]; then
         if is_service_enabled fuxi-k8s-volume-driver-server; then
            stop_process fuxi-k8s-volume-driver-server
+        fi
+
+        if is_service_enabled fuxi-k8s-volume-provisioner; then
+           stop_process fuxi-k8s-volume-provisioner
         fi
     fi
 fi
