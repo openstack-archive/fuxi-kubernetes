@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="260px" preserveAspectRatio="none" style="width:789px;height:260px;" version="1.1" viewBox="0 0 789 260" width="789px" zoomAndPan="magnify"><defs><filter height="300%" id="fe7qysy7r1lsj" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#fe7qysy7r1lsj)" height="175.7969" style="stroke: #000000; stroke-width: 2.0;" width="765.5" x="13" y="55.2969"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="81" x2="81" y1="38.2969" y2="248.0938"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="287.5" x2="287.5" y1="38.2969" y2="248.0938"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="443.5" x2="443.5" y1="38.2969" y2="248.0938"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="713.5" x2="713.5" y1="38.2969" y2="248.0938"/><rect fill="#FEFECE" filter="url(#fe7qysy7r1lsj)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="113" x="23" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="99" x="30" y="22.9951">_KnownObject</text><rect fill="#FEFECE" filter="url(#fe7qysy7r1lsj)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="80" x="245.5" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="66" x="252.5" y="22.9951">DeltaFIFO</text><rect fill="#FEFECE" filter="url(#fe7qysy7r1lsj)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="86" x="398.5" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="72" x="405.5" y="22.9951">Consumer</text><rect fill="#FEFECE" filter="url(#fe7qysy7r1lsj)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="106" x="658.5" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="92" x="665.5" y="22.9951">EventHandler</text><rect fill="none" height="175.7969" style="stroke: #000000; stroke-width: 2.0;" width="765.5" x="13" y="55.2969"/><polygon fill="#EEEEEE" points="13,55.2969,90,55.2969,90,62.2969,80,72.2969,13,72.2969,13,55.2969" style="stroke: #000000; stroke-width: 2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="28" y="68.3638">loop</text><polygon fill="#A80036" points="298.5,89.4297,288.5,93.4297,298.5,97.4297,294.5,93.4297" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="292.5" x2="442.5" y1="93.4297" y2="93.4297"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="84" x="304.5" y="88.4966">pop an event</text><line style="stroke: #A80036; stroke-width: 1.0;" x1="287.5" x2="329.5" y1="122.6953" y2="122.6953"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="329.5" x2="329.5" y1="122.6953" y2="135.6953"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="288.5" x2="329.5" y1="135.6953" y2="135.6953"/><polygon fill="#A80036" points="298.5,131.6953,288.5,135.6953,298.5,139.6953,294.5,135.6953" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="84" x="294.5" y="117.6294">pop an event</text><polygon fill="#A80036" points="92.5,160.6953,82.5,164.6953,92.5,168.6953,88.5,164.6953" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="86.5" x2="286.5" y1="164.6953" y2="164.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="182" x="98.5" y="159.7622">check and convert the event</text><polygon fill="#A80036" points="431.5,189.8281,441.5,193.8281,431.5,197.8281,435.5,193.8281" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="287.5" x2="437.5" y1="193.8281" y2="193.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="132" x="294.5" y="188.895">an event of resource</text><polygon fill="#A80036" points="701.5,218.9609,711.5,222.9609,701.5,226.9609,705.5,222.9609" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="443.5" x2="707.5" y1="222.9609" y2="222.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="246" x="450.5" y="218.0278">on_add/on_delete/on_update resource</text><!--
+@startuml
+hide footbox
+
+participant _KnownObject
+participant DeltaFIFO
+participant Consumer
+participant EventHandler
+
+
+group loop
+  Consumer -> DeltaFIFO: pop an event
+  DeltaFIFO -> DeltaFIFO: pop an event
+  DeltaFIFO -> _KnownObject: check and convert the event
+  DeltaFIFO -> Consumer: an event of resource
+  Consumer -> EventHandler: on_add/on_delete/on_update resource
+end
+@enduml
+
+PlantUML version 1.2017.16beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.7.0_25-b15
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

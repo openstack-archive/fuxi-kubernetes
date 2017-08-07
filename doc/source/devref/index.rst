@@ -6,6 +6,7 @@ Flex Volume Driver
 .. toctree::
    :maxdepth: 2
 
+   provisioner
    flex_volume_driver
 
 Indices and tables
