@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="248px" preserveAspectRatio="none" style="width:566px;height:248px;" version="1.1" viewBox="0 0 566 248" width="566px" zoomAndPan="magnify"><defs><filter height="300%" id="fcraiq1zlpyni" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="503" x="32.5" y="22.9951">Fuxi-Kubernetes Process Event of Resource Sequence Diagram</text><rect fill="#FFFFFF" filter="url(#fcraiq1zlpyni)" height="133.6641" style="stroke: #000000; stroke-width: 2.0;" width="542" x="13" y="85.5938"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="65" x2="65" y1="68.5938" y2="236.2578"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="220" x2="220" y1="68.5938" y2="236.2578"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="359" x2="359" y1="68.5938" y2="236.2578"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="490" x2="490" y1="68.5938" y2="236.2578"/><rect fill="#FEFECE" filter="url(#fcraiq1zlpyni)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="80" x="23" y="33.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="66" x="30" y="53.292">DeltaFIFO</text><rect fill="#FEFECE" filter="url(#fcraiq1zlpyni)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="86" x="175" y="33.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="72" x="182" y="53.292">Consumer</text><rect fill="#FEFECE" filter="url(#fcraiq1zlpyni)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="58" x="328" y="33.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="335" y="53.292">Cache</text><rect fill="#FEFECE" filter="url(#fcraiq1zlpyni)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="106" x="435" y="33.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="92" x="442" y="53.292">EventHandler</text><rect fill="none" height="133.6641" style="stroke: #000000; stroke-width: 2.0;" width="542" x="13" y="85.5938"/><polygon fill="#EEEEEE" points="13,85.5938,90,85.5938,90,92.5938,80,102.5938,13,102.5938,13,85.5938" style="stroke: #000000; stroke-width: 2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="28" y="98.6606">loop</text><polygon fill="#A80036" points="76,119.7266,66,123.7266,76,127.7266,72,123.7266" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="70" x2="219" y1="123.7266" y2="123.7266"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="76" x="82" y="118.7935">pop a event</text><polygon fill="#A80036" points="208,148.8594,218,152.8594,208,156.8594,212,152.8594" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="65" x2="214" y1="152.8594" y2="152.8594"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="131" x="72" y="147.9263">a event of resources</text><polygon fill="#A80036" points="347,177.9922,357,181.9922,347,185.9922,351,181.9922" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="220" x2="353" y1="181.9922" y2="181.9922"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="115" x="227" y="177.0591">recheck the event</text><polygon fill="#A80036" points="478,207.125,488,211.125,478,215.125,482,211.125" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="220" x2="484" y1="211.125" y2="211.125"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="246" x="227" y="206.1919">on_add/on_delete/on_update resource</text><!--
+@startuml
+title Fuxi-Kubernetes Process Event of Resource Sequence Diagram
+
+hide footbox
+
+participant DeltaFIFO
+participant Consumer
+participant Cache
+participant EventHandler
+
+
+group loop
+  Consumer -> DeltaFIFO: pop a event
+  DeltaFIFO -> Consumer: a event of resources
+  Consumer -> Cache: recheck the event
+  Consumer -> EventHandler: on_add/on_delete/on_update resource
+end
+@enduml
+
+PlantUML version 1.2017.16beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.7.0_25-b15
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
