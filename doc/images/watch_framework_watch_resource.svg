@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="307px" preserveAspectRatio="none" style="width:573px;height:307px;" version="1.1" viewBox="0 0 573 307" width="573px" zoomAndPan="magnify"><defs><filter height="300%" id="fdk42cg3uyn9c" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#fdk42cg3uyn9c)" height="223.0625" style="stroke: #000000; stroke-width: 2.0;" width="549" x="13" y="55.2969"/><rect fill="#FFFFFF" filter="url(#fdk42cg3uyn9c)" height="104.5313" style="stroke: #000000; stroke-width: 2.0;" width="529" x="23" y="166.8281"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="122" x2="122" y1="38.2969" y2="295.3594"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="298.5" x2="298.5" y1="38.2969" y2="295.3594"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="500" x2="500" y1="38.2969" y2="295.3594"/><rect fill="#FEFECE" filter="url(#fdk42cg3uyn9c)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="174" x="33" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="160" x="40" y="22.9951">Kubernetes_Api_Server</text><rect fill="#FEFECE" filter="url(#fdk42cg3uyn9c)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="77" x="258.5" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="63" x="265.5" y="22.9951">Producer</text><rect fill="#FEFECE" filter="url(#fdk42cg3uyn9c)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="80" x="458" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="66" x="465" y="22.9951">DeltaFIFO</text><rect fill="none" height="223.0625" style="stroke: #000000; stroke-width: 2.0;" width="549" x="13" y="55.2969"/><polygon fill="#EEEEEE" points="13,55.2969,90,55.2969,90,62.2969,80,72.2969,13,72.2969,13,55.2969" style="stroke: #000000; stroke-width: 2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="28" y="68.3638">loop</text><polygon fill="#A80036" points="133,89.4297,123,93.4297,133,97.4297,129,93.4297" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="127" x2="298" y1="93.4297" y2="93.4297"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="85" x="139" y="88.4966">list resources</text><polygon fill="#A80036" points="287,118.5625,297,122.5625,287,126.5625,291,122.5625" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="122" x2="293" y1="122.5625" y2="122.5625"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="101" x="129" y="117.6294">list of resources</text><polygon fill="#A80036" points="488,147.6953,498,151.6953,488,155.6953,492,151.6953" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="299" x2="494" y1="151.6953" y2="151.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="149" x="306" y="146.7622">replace each resources</text><rect fill="none" height="104.5313" style="stroke: #000000; stroke-width: 2.0;" width="529" x="23" y="166.8281"/><polygon fill="#EEEEEE" points="23,166.8281,100,166.8281,100,173.8281,90,183.8281,23,183.8281,23,166.8281" style="stroke: #000000; stroke-width: 2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="38" y="179.895">loop</text><polygon fill="#A80036" points="133,200.9609,123,204.9609,133,208.9609,129,204.9609" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="127" x2="298" y1="204.9609" y2="204.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="153" x="139" y="200.0278">watch event of resource</text><polygon fill="#A80036" points="287,230.0938,297,234.0938,287,238.0938,291,234.0938" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="122" x2="293" y1="234.0938" y2="234.0938"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="112" x="129" y="229.1606">event of resource</text><polygon fill="#A80036" points="488,259.2266,498,263.2266,488,267.2266,492,263.2266" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="299" x2="494" y1="263.2266" y2="263.2266"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="177" x="306" y="258.2935">add/delete/update resource</text><!--
+@startuml
+hide footbox
+
+participant Kubernetes_Api_Server as KAS
+participant Producer
+participant DeltaFIFO
+
+group loop
+  Producer -> KAS: list resources
+  KAS -> Producer: list of resources
+  Producer -> DeltaFIFO: replace each resources
+  
+  group loop
+    Producer -> KAS: watch event of resource
+    KAS -> Producer: event of resource
+    Producer -> DeltaFIFO: add/delete/update resource
+  end
+end
+@enduml
+
+PlantUML version 1.2017.16beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.7.0_25-b15
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
