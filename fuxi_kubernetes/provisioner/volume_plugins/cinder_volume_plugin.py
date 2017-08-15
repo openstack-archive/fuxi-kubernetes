@@ -26,7 +26,7 @@ class CinderVolumePlugin(base_volume_plugin.BaseVolumePlugin):
             constants.READ_WRITE_ONCE]
 
     def provision(self, volume_option):
-        access_modes = volume_option.pvc.spc.access_modes
+        access_modes = volume_option.pvc.spec.access_modes
         if not all([am in self._supported_volume_access_modes
                     for am in access_modes]):
             raise exceptions.CreatePersistentVolumeException(
@@ -34,6 +34,9 @@ class CinderVolumePlugin(base_volume_plugin.BaseVolumePlugin):
                 'receive invalid access modes:%s' % str(access_modes))
         if not access_modes:
             access_modes = self._supported_volume_access_modes
+
+        if volume_option.parameters is None:
+            volume_option.parameters = {}
 
         volume = None
         try:
@@ -55,7 +58,7 @@ class CinderVolumePlugin(base_volume_plugin.BaseVolumePlugin):
                     volume_option.pv_reclaim_policy),
                 access_modes=access_modes,
                 capacity={
-                    constants.PV_CAPACITY_STORAGE: str(volume.size)},
+                    constants.PV_CAPACITY_STORAGE: "%dGi" % volume.size},
                 flex_volume=k8s_client.V1FlexVolumeSource(
                     driver=constants.FLEX_VOLUME_DRIVER_CINDER,
                     fs_type=volume_option.parameters.get('fstype', 'ext4'),
@@ -82,10 +85,38 @@ class CinderVolumePlugin(base_volume_plugin.BaseVolumePlugin):
                 "Cinder volume, id=%s" % volume_id, str(ex))
 
     def _create_volume(self, volume_option):
+        def _get_volume_size():
+            try:
+                size = volume_option.pvc.spec.resources.requests.get(
+                    constants.PV_CAPACITY_STORAGE)
+            except Exception:
+                raise Exception('cat not parse volume size')
+
+            try:
+                s = int(size)
+                return s >> 30 + 1
+            except Exception:
+                pass
+
+            units = {'Ki': lambda d: (d >> 20) + 1,
+                     'Mi': lambda d: (d >> 10) + 1,
+                     'Gi': lambda d: d,
+                     'Ti': lambda d: d << 10,
+                     'Pi': lambda d: d << 20,
+                     'Ei': lambda d: d << 30}
+
+            unit = size[-2:] if len(size) > 2 else ""
+            if unit not in units:
+                raise Exception('unknown unit of volume size:%s' % size)
+
+            try:
+                return units[unit](int(size[0:len(size) - 2]))
+            except Exception:
+                raise Exception('can not convert volume size:%s' % size)
+
         params = volume_option.parameters
-        return self._cinder_client.create(
-            size=int(volume_option.pvc.spec.resources.requests.get(
-                constants.PV_CAPACITY_STORAGE)),
+        return self._cinder_client.volumes.create(
+            size=_get_volume_size(),
             name=volume_option.pv_name,
             volume_type=params.get('volume_type'),
             availability_zone=params.get('availability_zone')

@@ -28,6 +28,9 @@ def list_fuxi_k8s_opts():
         ('DEFAULT',
          itertools.chain(_options.list_opts()[0][1],)),
 
+        (config.provisioner_group.name,
+         itertools.chain(config.provisioner_opts,)),
+
         (config.flexvolume_driver_group.name,
          itertools.chain(config.flexvolume_driver_opts,)),
 
