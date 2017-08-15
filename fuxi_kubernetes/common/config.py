@@ -20,6 +20,25 @@ from fuxi_kubernetes.i18n import _
 from fuxi_kubernetes.version import version_info
 
 
+provisioner_group = cfg.OptGroup(
+    'provisioner',
+    title='provisioner Options',
+    help=_('Configuration options for provisioner which '
+           'provisions and deletes pv for kubernetes'))
+
+provisioner_opts = [
+    cfg.IntOpt('watch_timeout',
+               default=10,
+               help=_('Timeout in seconds for a watch request.')),
+    cfg.IntOpt('create_pv_retry_count',
+               default=3,
+               help=_('Retry count for creating pv.')),
+    cfg.IntOpt('create_pv_retry_interval',
+               default=3,
+               help=_('Interval in seconds of retrying creating pv.')),
+
+]
+
 flexvolume_driver_group = cfg.OptGroup(
     'flexvolume_driver',
     title='FlexVolume driver Options',
@@ -90,6 +109,7 @@ k8s_opts = [
 
 CONF = cfg.CONF
 logging.register_options(CONF)
+CONF.register_opts(provisioner_opts, provisioner_group.name)
 CONF.register_opts(flexvolume_driver_opts, flexvolume_driver_group.name)
 CONF.register_opts(k8s_opts, kubernetes_group.name)
 CONF.register_opts(cinder_opts, group=cinder_group.name)
