@@ -15,6 +15,19 @@ PROJECT_NAME = 'fuxi-kubernetes'
 
 LOCAL_HOST = '0.0.0.0'
 
+K8S_ANNOTATION_KEY = (
+    ANNOTATION_DINAMICALLY_PROVISIONED,
+    ANNOTATION_STORAGE_PROVISIONER,
+    ANNOTATION_BETA_STORAGE_CLASS
+) = (
+    "pv.kubernetes.io/provisioned-by",
+    "volume.beta.kubernetes.io/storage-provisionera",
+    "volume.beta.kubernetes.io/storage-class"
+)
+
+K8S_PV_PHASE_RELEASED = "Released"
+
+K8S_PV_RECLAIM_POLICY_DELETE = "Delete"
 
 WATCH_EVENT_TYPE = (
     WATCH_EVENT_TYPE_ADDED,
