@@ -35,7 +35,7 @@ def get_cinder_client(*args, **kwargs):
         version=2)
 
 
-def get_k8s_client(base_url):
+def get_k8s_client():
     def _check_file_exist(file_path):
         if not os.path.exists(file_path):
             raise RuntimeError(
