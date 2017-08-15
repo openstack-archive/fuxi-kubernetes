@@ -11,6 +11,7 @@
 # under the License.
 
 from oslo_service import service
+import time
 
 from fuxi_kubernetes.provisioner import controller
 
@@ -18,15 +19,19 @@ from fuxi_kubernetes.provisioner import controller
 class Service(service.ServiceBase):
     def __init__(self):
         self._controller = controller.Controller()
+        self._is_started = False
 
     def start(self):
         self._controller.start()
+        self._is_started = True
 
     def stop(self):
         self._controller.stop()
+        self._is_started = False
 
     def wait(self):
-        self._controller.wait()
+        while self._is_started:
+            time.sleep(1)
 
     def reset(self):
         pass
