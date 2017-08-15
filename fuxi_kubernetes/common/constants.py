@@ -15,6 +15,10 @@ PROJECT_NAME = 'fuxi-kubernetes'
 
 LOCAL_HOST = '0.0.0.0'
 
+K8S_PV_PHASE_RELEASED = "Released"
+
+K8S_PV_RECLAIM_POLICY_DELETE = "Delete"
+
 KUBERNETES_API_VERSION = 'v1'
 
 KUBERNETES_VOLUME_DYNAMICALLY_CREATED_BY_KEY = "kubernetes.io/createdby"
@@ -49,6 +53,17 @@ KUBERNETES_PV_ACCESS_MODES = (
     'ReadWriteOnce',
     'ReadOnlyMany',
     'ReadWriteMany'
+)
+
+
+K8S_ANNOTATION_KEY = (
+    ANNOTATION_DINAMICALLY_PROVISIONED,
+    ANNOTATION_STORAGE_PROVISIONER,
+    ANNOTATION_BETA_STORAGE_CLASS
+) = (
+    "pv.kubernetes.io/provisioned-by",
+    "volume.beta.kubernetes.io/storage-provisionera",
+    "volume.beta.kubernetes.io/storage-class"
 )
 
 
