@@ -31,6 +31,9 @@ def list_fuxi_k8s_opts():
         (config.flexvolume_driver_group.name,
          itertools.chain(config.flexvolume_driver_opts,)),
 
+        (config.kubernetes_group.name,
+         itertools.chain(config.k8s_opts,)),
+
         (config.cinder_group.name,
          itertools.chain(config.cinder_opts, auth_opts,)),
     ]

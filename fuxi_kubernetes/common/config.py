@@ -60,9 +60,38 @@ cinder_opts = [
 ]
 
 
+kubernetes_group = cfg.OptGroup(
+    'kubernetes',
+    title='Kubernetes Options',
+    help=_('Configuration options for Kubernetes'))
+
+
+k8s_opts = [
+    cfg.StrOpt('api_root',
+               help=_("The root URL of the Kubernetes API"),
+               default=os.environ.get('K8S_API', 'http://localhost:8080')),
+    cfg.StrOpt('ssl_client_crt_file',
+               help=_("Absolute path to client cert to "
+                      "connect to HTTPS K8S_API")),
+    cfg.StrOpt('ssl_client_key_file',
+               help=_("Absolute path client key file to "
+                      "connect to HTTPS K8S_API")),
+    cfg.StrOpt('ssl_ca_crt_file',
+               help=_("Absolute path to ca cert file to "
+                      "connect to HTTPS K8S_API")),
+    cfg.BoolOpt('ssl_verify_server_crt',
+                help=_("HTTPS K8S_API server identity verification"),
+                default=False),
+    cfg.StrOpt('token_file',
+               help=_("The token to talk to the k8s API"),
+               default=''),
+]
+
+
 CONF = cfg.CONF
 logging.register_options(CONF)
 CONF.register_opts(flexvolume_driver_opts, flexvolume_driver_group.name)
+CONF.register_opts(k8s_opts, kubernetes_group.name)
 CONF.register_opts(cinder_opts, group=cinder_group.name)
 kuryr_config.register_keystoneauth_opts(CONF, cinder_group.name)
 
