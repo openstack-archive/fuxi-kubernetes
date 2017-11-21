@@ -12,8 +12,8 @@
 
 """Start FlexVolume driver of Cinder"""
 
-from oslo_serialization import jsonutils
 import sys
+import ujson
 
 from fuxi_kubernetes.common import constants
 from fuxi_kubernetes.flex_volume_drivers.drivers.cinder import cinder
@@ -27,5 +27,5 @@ def main():
     """
 
     result = cinder.DriverCinder()(sys.argv[1:])
-    print(jsonutils.dumps(result()))
+    print(ujson.dumps(result()))
     sys.exit((0 if result.status == constants.STATUS_SUCCESS else 1))
