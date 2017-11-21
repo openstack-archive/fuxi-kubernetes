@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from oslo_serialization import jsonutils
 import requests
+import ujson
 
 from fuxi_kubernetes.common import constants
 from fuxi_kubernetes import exceptions
@@ -130,7 +130,7 @@ class BaseVolumeDriver(object):
 
         def _load_json_param(data):
             try:
-                return jsonutils.loads(data)
+                return ujson.loads(data)
             except Exception:
                 raise exceptions.InvalidVolumeDriverCmdParameter(
                     "can not load json parameter:(%s)" % data)
