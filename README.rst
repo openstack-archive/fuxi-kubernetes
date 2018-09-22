@@ -1,20 +1,10 @@
-========================
-Team and repository tags
-========================
+This project is no longer maintained.
 
-.. image:: http://governance.openstack.org/badges/fuxi-kubernetes.svg
-    :target: http://governance.openstack.org/reference/tags/index.html
+The contents of this repository are still available in the Git
+source code management system.  To see the contents of this
+repository before it reached its end of life, please check out the
+previous commit with "git checkout HEAD^1".
 
-.. Change things from this point on
-
-===============
-fuxi-kubernetes
-===============
-
-Make Kubernetes integration with OpenStack storage
-
-* Free software: Apache license
-* Documentation:
-* Source: http://git.openstack.org/cgit/openstack/fuxi-kubernetes
-* Bugs: http://bugs.launchpad.net/fuxi-kubernetes
-* Blueprints: https://blueprints.launchpad.net/fuxi-kubernetes
+For any further questions, please email
+openstack-dev@lists.openstack.org or join #openstack-dev on
+Freenode.
